@@ -1,18 +1,13 @@
 package main
 
 import (
+	"log"
 	"net/http"
-
-	"github.com/go-chi/chi"
-	"github.com/go-chi/render"
+	"todo/routes"
 )
 
 func main() {
-	r := chi.NewRouter()
-
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		render.JSON(w, r, "welcome from chi")
-	})
-
-	http.ListenAndServe(":3000", r)
+	//r := chi.NewRouter()
+	r := routes.Routes()
+	log.Fatal(http.ListenAndServe(":3000", r))
 }
